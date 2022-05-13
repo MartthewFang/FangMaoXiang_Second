@@ -46,13 +46,15 @@
     color: #2f2f2f;
     line-height: 65px;
 }
-.user-imfo {
+.user-imfo,
+.user-imfo-o {
     display: flex;
     padding: 10px 20px;
     justify-content: space-between;
     align-items: center;
 }
-.imfo-list {
+.imfo-list,
+.imfo-list-o {
     display: inline-flex;
     width: 60%;
     font-size: 13px;
@@ -103,3 +105,56 @@
     background: #fff;
 }
 
+#favor-collect-result .user-list {
+    display: none;
+}
+
+#favor-collect-result .user-list.appear {
+    display: block;
+}
+
+.user-list .to-user-page-o {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    padding: 10px 4px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.user-list .to-user-page-o .post-user {
+    height: 40px;
+}
+
+.user-list .to-user-page-o .portrait {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+}
+
+.user-list .to-user-page-o .username {
+    font-size: 18px;
+    line-height: 40px;
+}
+.user-list .subscribe {
+    height: 100%;
+    padding: 11px 0;
+}
+.user-list .subscribe>span {
+    position: relative;
+    height: 24px;
+    font-size: 13px;
+    line-height: 14px;
+    padding: 2px 6px;
+    margin: 10px;
+    border-radius: 5px;
+}
+.user-list .subscribe span.follow-y {
+    color: #fff;
+    background: #3b9e7f;
+}
+.user-list .subscribe span.follow-n {
+    color: #3b9e7f;
+    background: #fff;
+    border: 1px solid  #3b9e7f;
+}

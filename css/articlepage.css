@@ -52,11 +52,11 @@
     margin-right: 10px;
     border-radius: 13px;
 }
-.subscribe span.follow-n {
+.share .subscribe span.follow-n {
     border: 2px solid #3b9e7f;
     color: #3b9e7f;
 }
-.subscribe span.follow-y {
+.share .subscribe span.follow-y {
     border: 1px solid #545454;
     color: #545454;
 }
