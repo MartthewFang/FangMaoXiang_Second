@@ -1,0 +1,117 @@
+.search-header {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    height: 36px;
+    font-size: 20px;
+    color: #7b7878;
+    background: #fff;
+    padding: 8px 0 2px;
+}
+
+.search-header input {
+    width: 80%;
+    height: 26px;
+    border-radius: 5px;
+    padding: 0 5px 0 20px;
+    border: 1px solid #7b7878;
+    font-size: 13px;
+}
+
+.search-header input:focus {
+    border: 2px solid #3b9e7f;
+}
+
+.search-icon::before {
+    content: "\f002";
+    position: absolute;
+    left: 36px;
+    font-size: 14px;
+    line-height: 26px;
+    font-weight: 400;
+}
+
+.search-header button {
+    height: 26px;
+    padding: 0 4px;
+    margin-right: 5px;
+    border-radius: 5px;
+    background-color: rgb(241, 241, 241);
+    border: 1px solid #acacac;
+}
+
+#search-page .nav-list {
+    width: 100%;
+    height: 38px;
+    background: #ffffff;
+    overflow: hidden;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#search-page .nav-list ul {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 40px;
+}
+
+#search-page .nav-list ul li {
+    float: none;
+}
+
+#search-page .nav-container {
+    width: 100%;
+}
+
+.search-list {
+    display: none;
+}
+
+.search-list.appear {
+    display: block;
+}
+
+#search-page .to-user-page-o {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    padding: 10px 4px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#search-page .to-user-page-o .post-user {
+    height: 40px;
+}
+
+#search-page .to-user-page-o .portrait {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+}
+
+#search-page .to-user-page-o .username {
+    font-size: 18px;
+    line-height: 40px;
+}
+.search-list .subscribe {
+    height: 100%;
+    padding: 11px 0;
+}
+.search-list .subscribe>span {
+    position: relative;
+    height: 24px;
+    font-size: 13px;
+    line-height: 14px;
+    padding: 2px 6px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.no-result {
+    width: 100%;
+    text-align: center;
+    color: #acacac;
+    margin: 36px 0;
+}

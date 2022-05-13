@@ -1,0 +1,96 @@
+.news-header {
+    position: sticky;
+    top: 0px;
+    justify-content: space-between;
+    height: 36px;
+    font-size: 18px;
+    text-align: center;
+    background: #ffffff;
+    padding: 6px 0 2px;
+}
+.news-header>span {
+    position: relative;
+    left: 22px;
+}
+#back-home {
+    float: left;
+    padding: 0 6px;
+}
+.build-chat {
+    float: right;
+    padding: 0 10px;
+    color: rgb(79, 79, 79);
+}
+.build-chat span {
+    display: block;
+    font-size: 14px;
+    line-height: 27px;
+}
+.news-nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0 8px;
+
+}
+.news-nav>div {
+    margin: 0 30px;
+    text-align: center;
+    color: #a9a9a9;
+}
+.message-icon::before {
+    display: block;
+    height: 25px;
+    width: 25px;
+    margin: 18px 18px 10px;
+    font-size: 22px;
+}
+.news-container {
+    width: 100%;
+    margin: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0, .05);
+}
+.news-item {
+    height: 60px;
+    padding: 10px 0;
+    border-top: 1px solid rgba(0,0,0, .05);
+}
+.news-user {
+    height: 40px;
+    float: left;
+}
+.news-user>div {
+    float: left;
+}
+.news-user .portrait {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    background: #e2e2e2;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.news-user .portrait>img {
+    width: 100%;
+    z-index: 99;
+}
+.news-user .username {
+    height: 36px;
+    align-content: center;
+    font-weight: 500;
+    font-size: 18px;
+    color: #5f5f5f;
+    line-height: 24px;
+}
+.news-user .signature {
+    color: #a9a9a9;
+    font-size: 12px;
+    line-height: 12px;
+}
+.chevron-thin-right {
+    float: right;
+    line-height: 40px;
+    padding-right: 10px;
+    font-size: 16px;
+    color: #cfcfcf;
+}
+

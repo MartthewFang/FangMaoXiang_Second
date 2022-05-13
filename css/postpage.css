@@ -1,0 +1,138 @@
+.post-header {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    height: 36px;
+    font-size: 20px;
+    color: #7b7878;
+    background: #fff;
+    padding: 8px 0 2px;
+}
+
+.input-imfo {
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.add-piclist {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 10px;
+}
+
+.preview-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.pic-preview {
+    display: flex;
+    height: 80px;
+    width: 80px;
+    margin: 4px;
+    align-items: center;
+    overflow: hidden;
+}
+
+.pic-preview img {
+    width: 100%;
+}
+
+#add-pic {
+    height: 80px;
+    width: 80px;
+    background-color: #ebebeb;
+}
+.add-pic-btn {
+    position: relative;
+    height: 80px;
+    width: 80px;
+    margin: 4px;
+    z-index: 100;
+    background-color: #ebebeb;
+}
+#add-pic {
+    position: absolute;
+    z-index: 99;
+    opacity: 0;
+    height: 80px;
+    width: 80px;
+    background-color: #ebebeb;
+}
+.add-pic-btn svg {
+    position: absolute;
+    left: 20px;
+}
+
+.input-imfo {
+    margin: 0 10px;
+}
+
+
+#add-title {
+    font-size: 15px;
+    font-weight: 500;
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    padding-left: 4px;
+    border: none;
+    border-bottom: 1px solid #f1f1f1;
+    color: #000;
+}
+
+#add-title::-webkit-input-placeholder,
+#add-content::-webkit-input-placeholder {
+    color: #c4c4c4;
+}
+
+#add-content {
+    font-size: 14px;
+    width: 100%;
+    height: 100px;
+    border: none;
+    padding: 4px;
+    margin-top: 6px;
+    color: #000;
+    resize: none;
+    outline: none;
+}
+
+#add-content:focus {
+    border: none;
+}
+.tag-at {
+    margin-bottom: 6px;
+}
+.tag-at span {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 28px;
+    height: 28px;
+    padding: 0 6px;
+    margin: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #f4f4f4;
+
+}
+
+.post-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    box-shadow: 0 0.0625em 0.3125em rgb(0 0 0 / 15%);
+    color: #c4c4c4;
+    background: #ffffff;
+}
+
+.release-btn {
+    display: block;
+    width: 95%;
+    height: 36px;
+    margin: 7px auto;
+    color: #fff;
+    border: none;
+    border-radius: 18px;
+    background-color: #3b9e7f;
+}

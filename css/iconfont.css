@@ -1,0 +1,80 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot?lkda9k');
+  src: url('../fonts/icomoon.eot?lkda9k#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?lkda9k') format('truetype'),
+    url('../fonts/icomoon.woff?lkda9k') format('woff'),
+    url('../fonts/icomoon.svg?lkda9k#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+
+#add-post::before {
+  content: "\f196";
+}
+#search::before {
+  content: "\f002";
+}
+.home-icon::before {
+  content: "\eae8";
+}
+.news-icon::before {
+  content: "\f27b";
+}
+.user-icon::before {
+  content: "\f2c0";
+}
+.favor::before {
+  content: "\f08a";
+  padding-right: 2px;
+}
+.favor-y::before {
+  content: "\f004";
+  color: red;
+  padding-right: 2px;
+}
+.chevron-thin-left::before {
+  content: "\e901";
+  padding-left: 6px;
+}
+.chevron-thin-right::before {
+  content: "\e902";
+}
+#heart::before {
+  content: "\f004";
+  color: #ed7370;
+}
+#users::before {
+  content: "\e972";
+  color: #5690f3;
+}
+#commenting::before {
+  content: "\f27a";
+  color: #59ce9e;
+}
+#to-log-page::before {
+  content: "\e904";
+}
+#share-square-o::before {
+  content: "\f045";
+}
+#share-square-a::before {
+  content: "\f045";
+}
+.dislike::before {
+  content: "\f119";
+}
+.pencil::before {
+  content: "\f040";
+}
+#article-like::before {
+  content: "\f08a";  
+}
+#article-star::before {
+  content: "\f006";
+}
+#article-review::before {
+  content: "\f27b";
+}

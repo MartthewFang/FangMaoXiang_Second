@@ -1,0 +1,107 @@
+
+
+.page {
+    display: none;
+}
+.main>.appear {
+    display: block;
+}
+
+.post-pic {
+    width: inherit;
+    min-height: 40px;
+}
+.post-pic.no-pic {
+    height: auto;
+}
+.no-pic {
+    background: url(../image/preload/no_pic.png);
+}
+
+.post-pic>img {
+    width: 100%;
+}
+
+.post-title {
+    width: 100%;
+    height: 26px;
+    padding: 0 2px 0 8px;
+    margin: 3px 0 1px;
+    overflow: hidden;
+}
+.post-title h2 {
+    font-size: 15px;
+    line-height: 26px;
+
+}
+.post-user {
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+}
+.to-user-page-o {
+    display: flex;
+    width: max-content;
+    
+}
+.post-user .portrait,
+.post-user .username {
+    display: inline-block;
+}
+
+.post-user .portrait {
+    width: 25px;
+    height: 25px;
+    margin: 0 8px;
+    background: #e2e2e2;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.post-user .portrait>img {
+    width: 100%;
+    z-index: 9;
+}
+.username {
+    line-height: 25px;
+}
+
+.favorite {
+    height: 20px;
+    font-size: 12px;
+    margin: 5px 6px;
+}
+.favorite .favor {
+    line-height: 20px;
+}
+
+.main-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    box-shadow: 0 0.0625em 0.3125em rgb(0 0 0 / 15%);
+    color: #c4c4c4;
+    background: #ffffff;
+}
+.main-footer ul {
+    display: flex;
+    justify-content: space-around;
+}
+.main-footer ul li {
+    width: 33.33%;
+    text-align: center;
+}
+.main-footer ul li.active {
+    color: #3b9e7f;
+}
+.main-footer ul li {
+    display: block;
+    color: #c4c4c4;
+}
+.main-footer .ico {
+    height: 25px;
+    line-height: 25px;
+    margin-top: 8px;
+    font-size: 20px;
+}
