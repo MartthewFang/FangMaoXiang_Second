@@ -4,13 +4,10 @@ function ListenAddPost() {
         PutPic();
         postNoteBtn.addEventListener("click", function () {
             var formData = new FormData();
-            formData.append("userId",document.getElementById("log-in-user").getAttribute("user_id"));
-            formData.append("title",document.getElementById("add-title").value);
-            formData.append("tags",document.getElementById("add-tag").getElementsByClassName("tag"));
-            formData.append("images",document.getElementById("add-pic").files);
-
-            console.log(formData.get("images"));
-
+            formData.append("userId", document.getElementById("log-in-user").getAttribute("user_id"));
+            formData.append("title", document.getElementById("add-title").value);
+            formData.append("tags", document.getElementById("add-tag").getElementsByClassName("tag"));
+            formData.append("images", document.getElementById("add-pic").files[0]);
 
             // var data = "{\"userId\":"
             //     + document.getElementById("log-in-user").getAttribute("user_id") +
@@ -36,8 +33,15 @@ function ListenAddPost() {
             // xhr.withCredentials = true;
             xhr.addEventListener("readystatechange", function () {
                 if (this.readyState === 4) {
-                    console.log(typeof(this.responseText));
-                    
+                    console.log(typeof (this.responseText));
+                    if (JSON.parse(this.responseText).msg = "成功发布") {
+                        getNoteArr(document.getElementById("log-in-user").getAttribute("user_id"), 1);
+                        document.getElementById("post-page").style = "display: none;";
+                        document.getElementById("page-list").style = "";
+                    }
+                    else {
+                        alert("发布失败");
+                    }
                 }
             });
 
@@ -64,15 +68,15 @@ function PutPic() {
         for (let i = 0; i < fileList.length; i++) {
             var reader = new FileReader();
             reader.readAsDataURL(fileList[i]);
-            reader.onload = function(){
+            reader.onload = function () {
                 document.getElementById("preview").innerHTML += '<div class="pic-preview"><img src="'
-                + this.result +
-                '" alt=""></div>'
+                    + this.result +
+                    '" alt=""></div>'
             }
         }
     })
 }
 
 function ListenAddTag() {
-    
+
 }

@@ -71,23 +71,35 @@ function CreateUserBox(usersArr) {
     document.getElementById("search-user").innerHTML = userList.join('');
     for (let i = 0; i < usersArr.length; i++) {
         var userArr = document.getElementById("search-page").getElementsByClassName("to-user-page-o");
-        judgeFollowS(userArr[i].getAttribute("author_id"), i);
+        judgeFollow("serch-page",userArr[i].getAttribute("author_id"), i);
     }
 }
 
 
-function judgeFollowS(userId, index) {
-    var text = document.getElementsByClassName("follow")[0].getAttribute("userFollowArr_id");
-    var followArr = text.split(",");
+function judgeFollow(pageId,userId, index) {
+    var text1 = document.getElementById("log-in-user").getElementsByClassName("follow")[0].getAttribute("userFollowArr_id");
+    var followArr = text1.split(",");
+    var text2 = document.getElementById("log-in-user").getElementsByClassName("fans")[0].getAttribute("userFansArr_id");
+    var fansArr = text2.split(",");
     for (let i = 0; i < followArr.length; i++) {
         if (followArr[i] == userId) {
-            document.getElementById("search-page").getElementsByClassName("to-user-page-o")[index].innerHTML = "已关注";
+            for (let j = 0; j < fansArr.length; j++) {
+                if (fansArr[j] == userId) {
+                    document.getElementById(pageId).getElementsByClassName("subscribe")[index].getElementsByTagName("span")[0].innerHTML = "互相关注";
+                    document.getElementById(pageId).getElementsByClassName("subscribe")[index].getElementsByTagName("span")[0].classList.add("follow-y");
+                    return "follow-y";
+                }
+            }
+            document.getElementById(pageId).getElementsByClassName("subscribe")[index].getElementsByTagName("span")[0].innerHTML = "已关注";
+            document.getElementById(pageId).getElementsByClassName("subscribe")[index].getElementsByTagName("span")[0].classList.add("follow-y");
             return "follow-y";
         }
     }
-    document.getElementById("search-page").getElementsByClassName("to-user-page-o")[index].innerHTML = "未关注";
+    document.getElementById(pageId).getElementsByClassName("subscribe")[index].getElementsByTagName("span")[0].innerHTML = "未关注";
+    document.getElementById(pageId).getElementsByClassName("subscribe")[index].getElementsByTagName("span")[0].classList.add("follow-n");
     return "follow-n";
 }
+
 
 
 

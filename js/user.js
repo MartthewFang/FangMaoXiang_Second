@@ -24,11 +24,16 @@ function ListenUser() {
                     // console.log(this.responseText);
                     var jsonObj = JSON.parse(this.responseText);
                     if (jsonObj.msg == "查询成功") {
+                        var userId = document.getElementById("user-page-o").getAttribute("user_id");
                         userPageO.getElementsByClassName("portrait")[0].innerHTML = '<img src="' + jsonObj.user.avatar + '" alt="">';
                         userPageO.getElementsByClassName("username")[0].innerHTML = jsonObj.user.nickname;
                         userPageO.getElementsByClassName("follow")[0].innerHTML = jsonObj.user.follows.length;
+                        userPageO.getElementsByClassName("follow")[0].setAttribute("userFollowArr_id", jsonObj.user.follows.toString());
                         userPageO.getElementsByClassName("fans")[0].innerHTML = jsonObj.user.fans.length;
-                        userPageO.getElementsByClassName("favorite-collection")[0].innerHTML = jsonObj.user.likedArticles.length + jsonObj.user.staredArticles.length;
+                        userPageO.getElementsByClassName("fans")[0].setAttribute("userFansArr_id", jsonObj.user.fans.toString());
+                        getBeFavored(userId, 0);
+                        getBeCollected(userId, 0);
+                        // userPageO.getElementsByClassName("favorite-collection")[0].innerHTML = jsonObj.user.likedArticles.length + jsonObj.user.staredArticles.length;
                         getNoteArr(userId, 0);
                         var postNav = document.getElementById("user-post-nav-o");
                         var navArr = postNav.getElementsByTagName("li");
@@ -46,12 +51,15 @@ function ListenUser() {
                                 this.setAttribute("haveload", 1);
                             }
                         })
+                        ListenImfoListO();
                     }
                 }
             });
-            userPageO.style = "";
+            userPageO.style = "z-index:999;";
             document.getElementById("article-page").style = "display: none;";
             document.getElementById("page-list").style = "display: none;";
+            document.getElementById("follows-list").style = "display: none;";
+            document.getElementById("fans-list").style = "display: none;";
             document.getElementById("back-previous").addEventListener("click", function () {
                 userPageO.style = "display: none;";
                 document.getElementById("page-list").style = "";
@@ -137,6 +145,117 @@ function AddUserBox() {
             }
         });
     }
+}
+
+
+function ListenImfoList() {
+    var imfoList = document.getElementsByClassName("imfo-list")[0].children;
+    imfoList[0].addEventListener("click", function () {
+        CreateFollowsPage(1);
+    });
+    imfoList[1].addEventListener("click", function () {
+        CreateFansPage(1);
+    });
+    // imfoList[2].addEventListener("click", CreateFavorCollectPage(1));
 
 }
+
+function ListenImfoListO() {
+    var imfoListO = document.getElementsByClassName("imfo-list-o")[0].children;
+    imfoListO[0].addEventListener("click", function () {
+        CreateFollowsPage(0);
+    });
+    imfoListO[1].addEventListener("click", function () {
+        CreateFansPage(0);
+    });
+    // imfoListO[2].addEventListener("click", CreateFavorCollectPage(0));
+
+}
+
+function CreateFollowsPage(userYN) {
+    if (userYN == 1) {
+        var text = document.getElementById("log-in-user").getElementsByClassName("follow")[0].getAttribute("userFollowArr_id");
+    } else if (userYN == 0) {
+        var text = document.getElementById("user-page-o").getElementsByClassName("follow")[0].getAttribute("userFollowArr_id");
+    }
+    var userFollowArr = text.split(",");
+    for (let i = 0; i < userFollowArr.length; i++) {
+        var userId = userFollowArr[i];
+        var data = "";
+        var xhr = new XMLHttpRequest();
+        // xhr.withCredentials = true;
+        xhr.open("GET", "http://175.178.193.182:8080/user/fullInfo?userId=" + userId);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send(data);
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                // console.log(this.responseText);
+                var index = document.getElementById("follows-page").getElementsByClassName("to-user-page-o").length;
+                var jsonObj = JSON.parse(this.responseText);
+                document.getElementById("follows-list").innerHTML += ' <div class="to-user-page-o" author_id= "'
+                    + jsonObj.user.userId +
+                    '"><div class="post-user"><div class="portrait"><img src="'
+                    + jsonObj.user.avatar +
+                    '" alt=""></div><div class="username">'
+                    + jsonObj.user.nickname +
+                    '</div></div><div class="subscribe"><span class=""></span></div></div> '
+                judgeFollow("follows-page", jsonObj.user.userId, index);
+                ListenUser();
+            }
+
+        });
+
+    }
+    document.getElementById("page-list").style = "display: none;";
+    document.getElementById("follows-page").style = "";
+    document.getElementById("back-to-userpage1").addEventListener("click", function () {
+        document.getElementById("follows-page").style = "display: none;";
+        document.getElementById("page-list").style = "";
+    })
+}
+
+function CreateFansPage(userYN) {
+    if (userYN == 1) {
+        var text = document.getElementById("log-in-user").getElementsByClassName("fans")[0].getAttribute("userFansArr_id");
+    } else if (userYN == 0) {
+        var text = document.getElementById("user-page-o").getElementsByClassName("fans")[0].getAttribute("userFansArr_id");
+    }
+    var userFansArr = text.split(",");
+    for (let i = 0; i < userFansArr.length; i++) {
+        var userId = userFansArr[i];
+        var data = "";
+        var xhr = new XMLHttpRequest();
+        // xhr.withCredentials = true;
+        xhr.open("GET", "http://175.178.193.182:8080/user/fullInfo?userId=" + userId);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send(data);
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                var index = document.getElementById("fans-page").getElementsByClassName("to-user-page-o").length;
+                // console.log(this.responseText);
+                var jsonObj = JSON.parse(this.responseText);
+                document.getElementById("fans-list").innerHTML += '<div class="to-user-page-o" author_id= "'
+                    + jsonObj.user.userId +
+                    '"><div class="post-user"><div class="portrait"><img src="'
+                    + jsonObj.user.avatar +
+                    '" alt=""></div><div class="username">'
+                    + jsonObj.user.nickname +
+                    '</div></div><div class="subscribe"><span class=""></span></div></div>'
+                judgeFollow("fans-page", jsonObj.user.userId, index);
+                ListenUser();
+            }
+        });
+
+    }
+    
+    document.getElementById("page-list").style = "display: none;";
+    document.getElementById("fans-page").style = "";
+    document.getElementById("back-to-userpage2").addEventListener("click", function () {
+        document.getElementById("fans-page").style = "display: none;";
+        document.getElementById("page-list").style = "";
+    })
+}
+
+
+
 

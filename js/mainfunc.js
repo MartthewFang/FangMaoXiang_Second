@@ -201,13 +201,25 @@ function GetUserPage() {
             // console.log(this.responseText);
             var jsonObj = JSON.parse(this.responseText);
             if (jsonObj.msg == "查询成功") {
+                var userImfo = document.getElementById("log-in-user");
+                var userId = userImfo.getAttribute("user_id");
                 userImfo.getElementsByClassName("portrait")[0].innerHTML = '<img src="' + jsonObj.user.avatar + '" alt="">';
                 userImfo.getElementsByClassName("username")[0].innerHTML = jsonObj.user.nickname;
                 userImfo.getElementsByClassName("follow")[0].innerHTML = jsonObj.user.follows.length;
-                document.getElementsByClassName("follow")[0].setAttribute("userFollowArr_id", jsonObj.user.follows.toString());
+                userImfo.getElementsByClassName("follow")[0].setAttribute("userFollowArr_id", jsonObj.user.follows.toString());
                 userImfo.getElementsByClassName("fans")[0].innerHTML = jsonObj.user.fans.length;
-                document.getElementsByClassName("fans")[0].setAttribute("userFansArr_id", jsonObj.user.fans.toString());
-                userImfo.getElementsByClassName("favorite-collection")[0].innerHTML = jsonObj.user.likedArticles.length + jsonObj.user.staredArticles.length;
+                userImfo.getElementsByClassName("fans")[0].setAttribute("userFansArr_id", jsonObj.user.fans.toString());
+                getBeFavored(userId, 1);
+                getBeCollected(userId, 1);
+                var text1 = userImfo.getElementsByClassName("favorite-collection")[0].getAttribute("collect-user");
+                var text2 = userImfo.getElementsByClassName("favorite-collection")[0].getAttribute("favor-user");
+                if (text1 != null && text2 != null) {
+                    var collectArr = text1.split(",");
+                    var favorArr = text2.split(",");
+                    userImfo.getElementsByClassName("favorite-collection")[0].innerHTML = collectArr.length + favorArr.length;
+                }
+
+                // userImfo.getElementsByClassName("favorite-collection")[0].innerHTML = jsonObj.user.likedArticles.length + jsonObj.user.staredArticles.length;
                 getNoteArr(userId, 1);
                 var postNav = document.getElementById("user-post-nav");
                 var navArr = postNav.getElementsByTagName("li");
@@ -225,6 +237,7 @@ function GetUserPage() {
                         this.setAttribute("haveload", 1);
                     }
                 })
+                ListenImfoList();
             }
         }
     });
@@ -310,6 +323,59 @@ function getNoteArr(authorId, userYN) {
 }
 
 
+function getBeFavored(userId, userYN) {
+    var data = "";
+    var xhr = new XMLHttpRequest();
+    // xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            var rspText = JSON.parse(this.responseText);
+            if (userYN == 1) {
+                var favorArr = [];
+                for (let i = 0; i < rspText.like.length; i++) {
+                    favorArr.push(rspText.like.userId + "(" + rspText.like.articleId + ")");
+                }
+                document.getElementsByClassName("imfo-list")[0].getElementsByClassName("favorite-collection")[0].setAttribute("favor-user", favorArr.join(','));
+            } else if (userYN == 0) {
+                var favorArr = [];
+                for (let i = 0; i < rspText.like.length; i++) {
+                    favorArr.push(rspText.like.userId + "(" + rspText.like.articleId + ")");
+                }
+                document.getElementsByClassName("imfo-list-o")[0].getElementsByClassName("favorite-collection")[0].setAttribute("favor-user", favorArr.join(','));
+            }
+        }
+    });
+    xhr.open("GET", "http://175.178.193.182:8080/notice/article/like?userId=" + userId);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(data);
+}
+
+function getBeCollected(userId, userYN) {
+    var data = "";
+    var xhr = new XMLHttpRequest();
+    // xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            var rspText = JSON.parse(this.responseText);
+            if (userYN == 1) {
+                var collectArr = [];
+                for (let i = 0; i < rspText.star.length; i++) {
+                    collectArr.push(rspText.star.userId + "(" + rspText.star.articleId + ")");
+                }
+                document.getElementsByClassName("imfo-list")[0].getElementsByClassName("favorite-collection")[0].setAttribute("collect-user", collectArr.join(','));
+            } else if (userYN == 0) {
+                var collectArr = [];
+                for (let i = 0; i < rspText.star.length; i++) {
+                    collectArr.push(rspText.star.userId + "(" + rspText.star.articleId + ")");
+                }
+                document.getElementsByClassName("imfo-list-o")[0].getElementsByClassName("favorite-collection")[0].setAttribute("collect-user", collectArr.join(','));
+            }
+        }
+    });
+    xhr.open("GET", "http://175.178.193.182:8080/notice/article/star?userId=" + userId);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(data);
+}
 
 
 
