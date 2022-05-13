@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/userpage.css">
     <link rel="stylesheet" href="css/articlepage.css">
     <link rel="stylesheet" href="css/postpage.css">
+    <link rel="stylesheet" href="css/editpage.css">
     <link rel="stylesheet" href="css/searchpage.css">
 </head>
 
@@ -198,16 +199,16 @@
                 <div class="user-imfo">
                     <div class="imfo-list">
                         <div>
-                            <div class="follow imfo-num"></div>
+                            <div class="follow imfo-num">0</div>
                             <div>关注</div>
                         </div>
                         <div>
-                            <div class="fans imfo-num"></div>
+                            <div class="fans imfo-num">0</div>
                             <div>粉丝</div>
                         </div>
                         <div>
-                            <div class="favorite-collection imfo-num"></div>
-                            <div>点赞与收藏</div>
+                            <div class="favorite-collection imfo-num">0</div>
+                            <div>获赞与收藏</div>
                         </div>
                     </div>
                     <div id="edit-imfo">
@@ -259,7 +260,12 @@
         </footer>
     </div>
 
-    <div class="edit-page"></div>
+    <div id="edit-page" style="display: none;">
+        <header class="havetitle-header">
+            <span id="back-to-userpage" class="chevron-thin-left"></span>
+            <h2 class="header-title">编辑资料</h2>
+        </header>
+    </div>
 
     <div id="article-page" article_id="" style="display: none;">
         <header class="article-header">
@@ -346,8 +352,8 @@
                 </div>
                 <div class="username"></div>
             </div>
-            <div class="user-imfo">
-                <div class="imfo-list">
+            <div class="user-imfo-o">
+                <div class="imfo-list-o">
                     <div>
                         <div class="follow imfo-num">0</div>
                         <div>关注</div>
@@ -461,7 +467,7 @@
                     <span id="add-atuser">@用户</span>
                 </div>
                 <div id="add-tag">
-                    <span class="tag">#风景</span>
+                    <span class="tag"></span>
                 </div>
             </div>
         </form>
@@ -469,6 +475,56 @@
             <button class="release-btn" id="post-note-btn">发布笔记</button>
         </footer>
     </div>
+
+    <div id="follows-page" style="display: none;">
+        <header class="havetitle-header">
+            <span id="back-to-userpage1" class="chevron-thin-left"></span>
+            <h2 class="header-title">关注的人</h2>
+        </header>
+        <div class="user-list" id="follows-list">
+        </div>
+    </div>
+    <div id="fans-page" style="display: none;">
+        <header class="havetitle-header">
+            <span id="back-to-userpage2" class="chevron-thin-left"></span>
+            <h2 class="header-title">粉丝</h2>
+        </header>
+        <div class="user-list" id="fans-list">
+        </div>
+    </div>
+    <div id="favor-collect-page" style="display: none;">
+        <header class="havetitle-header">
+            <span id="back-to-userpage3" class="chevron-thin-left"></span>
+            <h2 class="header-title">获赞与收藏</h2>
+        </header>
+        <nav class="nav-list" id="favor-collect-nav">
+            <div class="nav-container">
+                <ul>
+                    <li class="active">获赞</li>
+                    <li>收藏</li>
+                </ul>
+            </div>
+        </nav>
+        <div id="favor-collect-result">
+            <div class="user-list" id="favorite-list">
+            </div>
+            <div class="user-list appear" id="favorite-list">
+                <!-- <div class="to-user-page-o">
+                    <div class="post-user">
+                        <div class="portrait">
+                        </div>
+                        <div class="username">
+                            fmx2
+                        </div>
+                    </div>
+                    <div class="subscribe">
+                        <span class="follow-n">未关注</span>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
     <script src="js/mainfunc.js"></script>
     <script src="js/search.js"></script>
     <script src="js/article.js"></script>
@@ -479,5 +535,4 @@
     <script src="js/basic.js"></script>
 
 </body>
-
 </html>
